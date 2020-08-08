@@ -28,6 +28,8 @@ namespace FelixNetCoreProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            // add component
+            services.AddServerSideBlazor();
             // add controllers
             services.AddControllers();
             services.AddTransient<JsonFileProductService>();
@@ -58,6 +60,7 @@ namespace FelixNetCoreProject
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
+                endpoints.MapBlazorHub();
                 //endpoints.MapGet("/products", (context) =>
                 //{
                 //    var products = app.ApplicationServices.GetService<JsonFileProductService>().GetProducts();
