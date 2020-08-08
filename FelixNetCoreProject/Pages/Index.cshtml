@@ -1,4 +1,5 @@
 ﻿@page
+@using FelixNetCoreProject.Components
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -8,15 +9,8 @@
     <h1 class="display-4">Welcome to the the paradise!</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
-<div class="card-columns">
 
-    @foreach (var product in Model.Products)
-    {
-        <div class="card">
-            <div class="card-img" style="background-image:url('@product.Image')"></div>
-            <div class="card-body">
-                <H5 class="card-title"> @product.Title</H5>
-            </div>
-        </div>
-    }
-</div>
+
+@(await Html.RenderComponentAsync<ProductList>(RenderMode.ServerPrerendered))
+
+<script src="_framework/blazor.server.js"></script>
